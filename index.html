@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TebbX - Modern clinic management system for healthcare professionals. Streamline appointments, patient records, and billing.">
+    <meta name="keywords" content="clinic management, healthcare software, medical practice management, patient management">
+    <title>TebbX - Modern Clinic Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: #0a0a0a;
+        }
+        
+        .gradient-text {
+            color: #0a0a0a;
+        }
+        
+        .hero-pattern {
+            background: #ffffff;
+            position: relative;
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .btn-primary {
+            background: #0a0a0a;
+            border: 2px solid #0a0a0a;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #ffffff;
+            color: #0a0a0a;
+        }
+        
+        .btn-secondary {
+            background: #ffffff;
+            border: 2px solid #0a0a0a;
+            color: #0a0a0a;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+        
+        .section-pattern {
+            background: #fafafa;
+        }
+        
+        .logo-img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .minimal-border {
+            border: 1px solid #e5e5e5;
+        }
+        
+        .icon-box {
+            background: #0a0a0a;
+        }
+        
+        .text-rich-black {
+            color: #0a0a0a;
+        }
+        
+        .bg-rich-black {
+            background: #0a0a0a;
+        }
+        
+        .border-rich-black {
+            border-color: #0a0a0a;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img src="img/logo.svg" alt="TebbX Logo" class="logo-img">
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <a href="#waitlist" class="btn-primary text-white px-8 py-3 rounded-full font-semibold">
+                        Join Waitlist
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern pt-32 pb-24 lg:pt-40 lg:pb-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="inline-block bg-rich-black text-white px-4 py-2 rounded-full mb-8 text-sm font-medium">
+                    Coming Soon
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 text-rich-black">
+                    Modern Clinic<br>Management<br>Made Simple
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-2xl mx-auto">
+                    Streamline your healthcare practice with TebbX — the all-in-one platform for appointments, patient records, and billing.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#waitlist" class="btn-primary text-white px-10 py-4 rounded-full font-semibold text-lg transition">
+                        Join Waitlist
+                    </a>
+                    <a href="#features" class="btn-secondary px-10 py-4 rounded-full font-semibold text-lg transition">
+                        Learn More
+                    </a>
+                </div>
+                <div class="mt-12 flex items-center justify-center gap-8 text-sm text-gray-500">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>No credit card</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Free during beta</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold text-rich-black mb-6">
+                    Everything You Need
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Powerful features for modern healthcare
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Feature 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-calendar-check text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-rich-black mb-3">Smart Scheduling</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Intelligent appointment booking with automated reminders and patient self-scheduling.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-user-injured text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-rich-black mb-3">Patient Records</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Secure electronic health records with easy access to patient history.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-file-invoice-dollar text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-rich-black mb-3">Billing & Payments</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Streamlined invoicing and insurance claims processing.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-chart-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-rich-black mb-3">Analytics & Reports</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Real-time insights with customizable reports and dashboards.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-shield-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-rich-black mb-3">HIPAA Compliant</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Enterprise-grade security with full HIPAA compliance.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-mobile-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-rich-black mb-3">Mobile Access</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Access your clinic data anytime, anywhere.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-24 section-pattern">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-rich-black mb-6">
+                Why Choose TebbX
+            </h2>
+            <p class="text-xl text-gray-600 mb-16 max-w-2xl mx-auto">
+                Transform your practice with a platform built for modern healthcare
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <div class="text-4xl font-bold text-rich-black mb-2">10+</div>
+                    <div class="text-sm text-gray-600 uppercase tracking-wider">Hours Saved Weekly</div>
+                </div>
+
+                <div>
+                    <div class="text-4xl font-bold text-rich-black mb-2">30%</div>
+                    <div class="text-sm text-gray-600 uppercase tracking-wider">Revenue Increase</div>
+                </div>
+
+                <div>
+                    <div class="text-4xl font-bold text-rich-black mb-2">98%</div>
+                    <div class="text-sm text-gray-600 uppercase tracking-wider">Satisfaction Rate</div>
+                </div>
+
+                <div>
+                    <div class="text-4xl font-bold text-rich-black mb-2">5min</div>
+                    <div class="text-sm text-gray-600 uppercase tracking-wider">Quick Setup</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Teaser -->
+    <section id="pricing" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold text-rich-black mb-6">
+                    Simple Pricing
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Flexible plans for practices of all sizes
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="border-2 border-gray-200 rounded-2xl p-8 hover:border-rich-black transition">
+                    <div class="text-center mb-8">
+                        <h3 class="text-lg font-semibold text-gray-600 mb-4">Starter</h3>
+                        <div class="text-5xl font-bold text-rich-black mb-2">$49</div>
+                        <div class="text-gray-500">per month</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Up to 100 patients</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Basic scheduling</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Patient records</span>
+                        </li>
+                    </ul>
+                    <button class="w-full btn-secondary px-6 py-3 rounded-full font-semibold">
+                        Join Waitlist
+                    </button>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="bg-rich-black text-white rounded-2xl p-8 relative transform scale-105">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white text-rich-black px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                        Popular
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-lg font-semibold text-gray-300 mb-4">Professional</h3>
+                        <div class="text-5xl font-bold text-white mb-2">$99</div>
+                        <div class="text-gray-400">per month</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Unlimited patients</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Advanced scheduling</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Analytics & reports</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Priority support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-white text-rich-black px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                        Join Waitlist
+                    </button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="border-2 border-gray-200 rounded-2xl p-8 hover:border-rich-black transition">
+                    <div class="text-center mb-8">
+                        <h3 class="text-lg font-semibold text-gray-600 mb-4">Enterprise</h3>
+                        <div class="text-5xl font-bold text-rich-black mb-2">Custom</div>
+                        <div class="text-gray-500">contact us</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Everything in Pro</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Multi-location</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Dedicated support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full btn-secondary px-6 py-3 rounded-full font-semibold">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <p class="text-gray-600">
+                    Early adopters get <span class="font-bold text-rich-black">3 months free</span> during beta
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section id="waitlist" class="py-24 bg-rich-black">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Join the Waitlist
+                </h2>
+                <p class="text-xl text-gray-400">
+                    Be first to experience TebbX when we launch
+                </p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 md:p-12">
+                <form id="waitlist-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                        <label for="firstName" class="block text-sm font-medium text-gray-900 mb-2">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
+                        </div>
+                        <div>
+                        <label for="lastName" class="block text-sm font-medium text-gray-900 mb-2">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-900 mb-2">Email Address *</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
+                    </div>
+
+                    <div>
+                        <label for="clinicName" class="block text-sm font-medium text-gray-900 mb-2">Clinic/Practice Name</label>
+                        <input type="text" id="clinicName" name="clinicName" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
+                    </div>
+
+                    <div>
+                        <label for="clinicSize" class="block text-sm font-medium text-gray-900 mb-2">Practice Size</label>
+                        <select id="clinicSize" name="clinicSize" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
+                            <option value="">Select practice size</option>
+                            <option value="solo">Solo Practitioner</option>
+                            <option value="small">Small Practice (2-5 providers)</option>
+                            <option value="medium">Medium Practice (6-20 providers)</option>
+                            <option value="large">Large Practice (20+ providers)</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-start">
+                        <input type="checkbox" id="newsletter" name="newsletter" class="mt-1 w-5 h-5 text-rich-black border-gray-300 rounded focus:ring-rich-black">
+                        <label for="newsletter" class="ml-3 text-sm text-gray-700">
+                            I'd like to receive updates about TebbX
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full btn-primary text-white px-8 py-4 rounded-full font-bold text-lg">
+                        Join the Waitlist
+                    </button>
+
+                    <p class="text-center text-sm text-gray-600">
+                        By joining, you'll get early access, exclusive discounts, and priority support
+                    </p>
+                </form>
+
+                <div id="success-message" class="hidden mt-6 p-4 bg-green-100 border-2 border-green-500 rounded-lg text-green-700 text-center">
+                    <i class="fas fa-check-circle text-2xl mb-2"></i>
+                    <p class="font-bold">Thank you for joining our waitlist!</p>
+                    <p>We'll be in touch soon with exclusive early access details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center">
+                    <img src="img/logo.svg" alt="TebbX Logo" class="footer-logo">
+                </div>
+                
+                <div class="flex gap-6 text-sm text-gray-600">
+                    <a href="#features" class="hover:text-rich-black transition">Features</a>
+                    <a href="#benefits" class="hover:text-rich-black transition">Benefits</a>
+                    <a href="#pricing" class="hover:text-rich-black transition">Pricing</a>
+                    <a href="#waitlist" class="hover:text-rich-black transition">Waitlist</a>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="https://twitter.com/tebbx" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
+                        <i class="fab fa-twitter text-gray-600"></i>
+                    </a>
+                    <a href="https://linkedin.com/company/tebbx" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
+                        <i class="fab fa-linkedin text-gray-600"></i>
+                    </a>
+                    <a href="https://instagram.com/tebbx" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
+                        <i class="fab fa-instagram text-gray-600"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 mt-12 pt-8 text-center">
+                <p class="text-sm text-gray-600">
+                    © 2025 TebbX. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const waitlistForm = document.getElementById('waitlist-form');
+        const successMessage = document.getElementById('success-message');
+
+        waitlistForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your backend
+            // For now, we'll just show the success message
+            
+            const formData = new FormData(waitlistForm);
+            const data = Object.fromEntries(formData);
+            
+            console.log('Form submitted with data:', data);
+            
+            // Show success message
+            waitlistForm.style.display = 'none';
+            successMessage.classList.remove('hidden');
+            
+            // Optional: You can integrate with services like:
+            // - Google Forms
+            // - Mailchimp
+            // - ConvertKit
+            // - Your own backend API
+        });
+
+        // Add navbar shadow on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
+

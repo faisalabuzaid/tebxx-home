@@ -4,11 +4,13 @@ A professional, enterprise-level landing page for TebbX clinic management system
 
 ## 🚀 Features
 
-- **Modern Design**: Beautiful gradient UI with Tailwind CSS
+- **Minimal Black & White Design**: Clean, professional aesthetic with pure black and white
+- **SVG Logo**: Crisp, scalable logo from your brand assets
 - **Responsive**: Mobile-first design that works on all devices
 - **Fast Loading**: Optimized for performance
 - **SEO Friendly**: Proper meta tags and semantic HTML
 - **Conversion Optimized**: Clear CTAs and waitlist signup form
+- **Simplified Navigation**: Minimal header focused on conversion
 
 ## 📋 Sections
 
@@ -196,27 +198,34 @@ The waitlist form currently logs to console. Integrate with:
 
 ### Update Colors
 
-The current color scheme uses purple gradients. To change:
+The current design uses a minimal black and white palette:
 
-1. Find and replace color values in `index.html`:
-   - Primary: `#667eea` → Your color
-   - Secondary: `#764ba2` → Your color
+**Current Colors:**
+- Rich Black: `#0a0a0a` (primary, buttons, text - softer than pure black)
+- White: `#ffffff` (backgrounds, button hover)
+- Light Gray: `#fafafa` (section backgrounds)
+- Gray borders: `#e5e5e5`, `#d1d5db`
+- Gray text: `#6b7280`, `#9ca3af`
 
-2. Or use Tailwind's color classes:
-   - `purple-600` → `blue-600`, `green-600`, etc.
+To add color:
+1. Update the `.btn-primary` and `.icon-box` classes in `index.html`
+2. Replace `#000000` with your brand color
+3. Adjust hover states accordingly
 
-## 📱 Mobile Menu
-
-The mobile menu is hidden by default and appears when clicking the hamburger icon on small screens.
+Or use Tailwind's color utilities:
+- `bg-black` → `bg-blue-600`, `bg-purple-600`, etc.
+- `border-black` → `border-blue-600`, etc.
 
 ## 🎨 Design Features
 
-- **Gradient backgrounds**
-- **Glassmorphism effects**
-- **Hover animations**
-- **Smooth scrolling**
-- **Floating animations**
-- **Card hover effects**
+- **Minimal Black & White**: Pure #000000 and #FFFFFF color palette
+- **Clean Typography**: Bold, readable Inter font
+- **Subtle Borders**: Delicate #e5e5e5 borders for separation
+- **Smooth Transitions**: Hover effects on buttons and cards
+- **Rounded Corners**: Modern border-radius for softness
+- **SVG Icons**: Inline SVG checkmarks and elements
+- **Centered Layouts**: Balanced, symmetrical design
+- **Negative Space**: Generous whitespace for breathing room
 
 ## 📊 Analytics (Optional)
 
