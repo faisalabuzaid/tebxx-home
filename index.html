@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="TebbX - Modern clinic management system for healthcare professionals. Streamline appointments, patient records, and billing.">
     <meta name="keywords" content="clinic management, healthcare software, medical practice management, patient management">
+    <link rel="canonical" href="https://tebbx.com/">
+    <meta property="og:title" content="TebbX - Modern Clinic Management System">
+    <meta property="og:description" content="Streamline appointments, patient records, billing, and more with TebbX.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tebbx.com/">
+    <meta property="og:image" content="img/cover.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TebbX - Modern Clinic Management System">
+    <meta name="twitter:description" content="Streamline appointments, patient records, billing, and more with TebbX.">
+    <meta name="twitter:image" content="img/cover.jpg">
     <title>TebbX - Modern Clinic Management System</title>
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -26,6 +37,22 @@
         .hero-pattern {
             background: #ffffff;
             position: relative;
+        }
+        /* Minimal creative depth: ultra-soft grid + vignette */
+        .hero-pattern::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(0deg, rgba(0,0,0,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+        }
+        .hero-pattern::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(100% 60% at 50% 0%, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.0) 60%);
+            pointer-events: none;
         }
         
         .card-hover {
@@ -103,6 +130,44 @@
         
         .border-rich-black {
             border-color: #0a0a0a;
+        }
+
+        /* Animated underline for links (minimal, elegant) */
+        .link-underline {
+            position: relative;
+        }
+        .link-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 1px;
+            background-color: currentColor;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 200ms ease;
+        }
+        .link-underline:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Focus-visible for accessibility */
+        :where(a, button, input, select, textarea):focus-visible {
+            outline: 2px solid #0a0a0a;
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+
+        /* Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+            .link-underline::after {
+                transition: none !important;
+            }
         }
     </style>
 </head>
@@ -420,41 +485,44 @@
             </div>
 
             <div class="bg-white rounded-3xl p-8 md:p-12">
-                <form id="waitlist-form" class="space-y-6">
+                <form id="waitlist-form" class="space-y-6" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSeDdQ9aKOxDpgpwjXWFWAiOjo65K6Hhq5ZqXeMKQkAramjQ6A/formResponse" target="hidden_iframe">
+                    <input type="hidden" name="fvv" value="1">
+                    <input type="hidden" name="pageHistory" value="0">
+                    <input type="hidden" name="fbzx" value="-6561125678200727329">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                         <label for="firstName" class="block text-sm font-medium text-gray-900 mb-2">First Name *</label>
-                        <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
+                        <input type="text" id="firstName" name="entry.1121097679" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
                         </div>
                         <div>
                         <label for="lastName" class="block text-sm font-medium text-gray-900 mb-2">Last Name *</label>
-                        <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
+                        <input type="text" id="lastName" name="entry.1352493208" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
                         </div>
                     </div>
 
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-900 mb-2">Email Address *</label>
-                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
+                        <input type="email" id="email" name="entry.1816829922" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
                     </div>
 
                     <div>
-                        <label for="clinicName" class="block text-sm font-medium text-gray-900 mb-2">Clinic/Practice Name</label>
-                        <input type="text" id="clinicName" name="clinicName" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
+                        <label for="clinicName" class="block text-sm font-medium text-gray-900 mb-2">Clinic/Practice Name *</label>
+                        <input type="text" id="clinicName" name="entry.1503073627" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
                     </div>
 
                     <div>
-                        <label for="clinicSize" class="block text-sm font-medium text-gray-900 mb-2">Practice Size</label>
-                        <select id="clinicSize" name="clinicSize" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
+                        <label for="clinicSize" class="block text-sm font-medium text-gray-900 mb-2">Practice Size *</label>
+                        <select id="clinicSize" name="entry.1368136194" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
                             <option value="">Select practice size</option>
-                            <option value="solo">Solo Practitioner</option>
-                            <option value="small">Small Practice (2-5 providers)</option>
-                            <option value="medium">Medium Practice (6-20 providers)</option>
-                            <option value="large">Large Practice (20+ providers)</option>
+                            <option value="Solo Practitioner">Solo Practitioner</option>
+                            <option value="Small Practice (2-5 Providers)">Small Practice (2-5 Providers)</option>
+                            <option value="Medium Practice (6-20 Providers)">Medium Practice (6-20 Providers)</option>
+                            <option value="Large Practice (20+ Providers)">Large Practice (20+ Providers)</option>
                         </select>
                     </div>
 
                     <div class="flex items-start">
-                        <input type="checkbox" id="newsletter" name="newsletter" class="mt-1 w-5 h-5 text-rich-black border-gray-300 rounded focus:ring-rich-black">
+                        <input type="checkbox" id="newsletter" name="entry.410652002" value="Yes" class="mt-1 w-5 h-5 text-rich-black border-gray-300 rounded focus:ring-rich-black">
                         <label for="newsletter" class="ml-3 text-sm text-gray-700">
                             I'd like to receive updates about TebbX
                         </label>
@@ -468,6 +536,8 @@
                         By joining, you'll get early access, exclusive discounts, and priority support
                     </p>
                 </form>
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                <iframe name="hidden_iframe" style="display:none;"></iframe>
 
                 <div id="success-message" class="hidden mt-6 p-4 bg-green-100 border-2 border-green-500 rounded-lg text-green-700 text-center">
                     <i class="fas fa-check-circle text-2xl mb-2"></i>
@@ -487,20 +557,20 @@
                 </div>
                 
                 <div class="flex gap-6 text-sm text-gray-600">
-                    <a href="#features" class="hover:text-rich-black transition">Features</a>
-                    <a href="#benefits" class="hover:text-rich-black transition">Benefits</a>
-                    <a href="#pricing" class="hover:text-rich-black transition">Pricing</a>
-                    <a href="#waitlist" class="hover:text-rich-black transition">Waitlist</a>
+                    <a href="#features" class="hover:text-rich-black transition link-underline">Features</a>
+                    <a href="#benefits" class="hover:text-rich-black transition link-underline">Benefits</a>
+                    <a href="#pricing" class="hover:text-rich-black transition link-underline">Pricing</a>
+                    <a href="#waitlist" class="hover:text-rich-black transition link-underline">Waitlist</a>
                 </div>
 
                 <div class="flex gap-4">
-                    <a href="https://twitter.com/tebbx" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
+                    <a href="https://twitter.com/tebbxco" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
                         <i class="fab fa-twitter text-gray-600"></i>
                     </a>
                     <a href="https://linkedin.com/company/tebbx" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
                         <i class="fab fa-linkedin text-gray-600"></i>
                     </a>
-                    <a href="https://instagram.com/tebbx" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
+                    <a href="https://instagram.com/tebbxco" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
                         <i class="fab fa-instagram text-gray-600"></i>
                     </a>
                 </div>
@@ -530,31 +600,18 @@
             });
         });
 
-        // Form submission
+        // Form submission → let POST go to Google; show success when iframe loads
         const waitlistForm = document.getElementById('waitlist-form');
         const successMessage = document.getElementById('success-message');
+        const hiddenIframe = document.getElementById('hidden_iframe');
 
-        waitlistForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would typically send the form data to your backend
-            // For now, we'll just show the success message
-            
-            const formData = new FormData(waitlistForm);
-            const data = Object.fromEntries(formData);
-            
-            console.log('Form submitted with data:', data);
-            
-            // Show success message
-            waitlistForm.style.display = 'none';
-            successMessage.classList.remove('hidden');
-            
-            // Optional: You can integrate with services like:
-            // - Google Forms
-            // - Mailchimp
-            // - ConvertKit
-            // - Your own backend API
-        });
+        if (hiddenIframe) {
+            hiddenIframe.onload = function () {
+                if (!successMessage.classList.contains('hidden')) return;
+                waitlistForm.style.display = 'none';
+                successMessage.classList.remove('hidden');
+            };
+        }
 
         // Add navbar shadow on scroll
         window.addEventListener('scroll', () => {
