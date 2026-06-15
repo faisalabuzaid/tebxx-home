@@ -1,628 +1,729 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TebbX - Modern clinic management system for healthcare professionals. Streamline appointments, patient records, and billing.">
-    <meta name="keywords" content="clinic management, healthcare software, medical practice management, patient management">
-    <link rel="canonical" href="https://tebbx.com/">
-    <meta property="og:title" content="TebbX - Modern Clinic Management System">
-    <meta property="og:description" content="Streamline appointments, patient records, billing, and more with TebbX.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tebbx.com/">
-    <meta property="og:image" content="img/cover.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TebbX - Modern Clinic Management System">
-    <meta name="twitter:description" content="Streamline appointments, patient records, billing, and more with TebbX.">
-    <meta name="twitter:image" content="img/cover.jpg">
-    <title>TebbX - Modern Clinic Management System</title>
-    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .gradient-bg {
-            background: #0a0a0a;
-        }
-        
-        .gradient-text {
-            color: #0a0a0a;
-        }
-        
-        .hero-pattern {
-            background: #ffffff;
-            position: relative;
-        }
-        /* Minimal creative depth: ultra-soft grid + vignette */
-        .hero-pattern::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: linear-gradient(0deg, rgba(0,0,0,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px);
-            background-size: 24px 24px;
-            pointer-events: none;
-        }
-        .hero-pattern::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(100% 60% at 50% 0%, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.0) 60%);
-            pointer-events: none;
-        }
-        
-        .card-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .btn-primary {
-            background: #0a0a0a;
-            border: 2px solid #0a0a0a;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background: #ffffff;
-            color: #0a0a0a;
-        }
-        
-        .btn-secondary {
-            background: #ffffff;
-            border: 2px solid #0a0a0a;
-            color: #0a0a0a;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-secondary:hover {
-            background: #0a0a0a;
-            color: #ffffff;
-        }
-        
-        .section-pattern {
-            background: #fafafa;
-        }
-        
-        .logo-img {
-            height: 80px;
-            width: auto;
-            object-fit: contain;
-        }
-        
-        .footer-logo {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-        }
-        
-        .minimal-border {
-            border: 1px solid #e5e5e5;
-        }
-        
-        .icon-box {
-            background: #0a0a0a;
-        }
-        
-        .text-rich-black {
-            color: #0a0a0a;
-        }
-        
-        .bg-rich-black {
-            background: #0a0a0a;
-        }
-        
-        .border-rich-black {
-            border-color: #0a0a0a;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jadwala — Run your service business, effortlessly.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Animated underline for links (minimal, elegant) */
-        .link-underline {
-            position: relative;
-        }
-        .link-underline::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 100%;
-            height: 1px;
-            background-color: currentColor;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 200ms ease;
-        }
-        .link-underline:hover::after {
-            transform: scaleX(1);
-        }
+    :root {
+      --bg:        #0A0A0F;
+      --surface:   #111118;
+      --border:    #1E1E2E;
+      --accent:    #6C63FF;
+      --warm:      #F5A623;
+      --text-1:    #F0F0F5;
+      --text-2:    #8888A0;
+      --text-3:    #55556A;
+      --font:      'Plus Jakarta Sans', system-ui, sans-serif;
+      --mono:      'DM Mono', monospace;
+      --radius-pill: 9999px;
+    }
 
-        /* Focus-visible for accessibility */
-        :where(a, button, input, select, textarea):focus-visible {
-            outline: 2px solid #0a0a0a;
-            outline-offset: 3px;
-            border-radius: 8px;
-        }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-1);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::-webkit-scrollbar { width: 0; height: 0; }
+    a { color: inherit; text-decoration: none; }
 
-        /* Respect reduced motion preferences */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
-            .link-underline::after {
-                transition: none !important;
-            }
-        }
-    </style>
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* Animations */
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+    @keyframes blob {
+      0%   { transform: scale(1) translate(0,0);          opacity:.5; }
+      33%  { transform: scale(1.05) translate(20px,-20px); opacity:.7; }
+      66%  { transform: scale(.98) translate(-15px,15px);  opacity:.4; }
+      100% { transform: scale(1) translate(0,0);          opacity:.5; }
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* Layout */
+    .container { max-width:1200px; margin:0 auto; padding:0 24px; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .section-h2 {
+      font-size: clamp(28px,4vw,48px);
+      font-weight: 300;
+      letter-spacing: -.025em;
+      line-height: 1.12;
+      color: var(--text-1);
+      margin-bottom: 64px;
+    }
+
+    /* ── NAV ── */
+    #nav-toggle { display:none; }
+
+    nav {
+      position: fixed;
+      top:0; left:0; right:0;
+      z-index: 200;
+      height: 64px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(10,10,15,.78);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .wordmark { font-size:20px; font-weight:700; letter-spacing:-.02em; color:var(--text-1); }
+
+    .nav-links { display:flex; align-items:center; gap:32px; }
+    .nav-links a { font-size:14px; font-weight:500; color:var(--text-2); transition:color .2s; }
+    .nav-links a:hover { color:var(--text-1); }
+
+    .btn-nav {
+      display:inline-flex; align-items:center;
+      font-size:14px; font-weight:600; color:#fff;
+      background:var(--accent); padding:9px 20px;
+      border-radius:var(--radius-pill);
+      transition:opacity .2s, transform .2s;
+    }
+    .btn-nav:hover { opacity:.86; transform:translateY(-1px); }
+
+    .hamburger {
+      display:none; flex-direction:column;
+      justify-content:center; gap:5px;
+      width:32px; height:32px; cursor:pointer; padding:4px;
+    }
+    .hamburger span {
+      display:block; height:2px;
+      background:var(--text-1); border-radius:2px;
+      transition:transform .3s, opacity .3s;
+    }
+
+    .mobile-overlay {
+      display:none; position:fixed;
+      inset:64px 0 0 0;
+      background:var(--bg); z-index:199;
+      flex-direction:column; align-items:center;
+      justify-content:center; gap:40px;
+    }
+    .mobile-overlay a { font-size:22px; font-weight:500; color:var(--text-1); }
+    .mobile-overlay .btn-nav { font-size:16px; padding:14px 36px; }
+
+    #nav-toggle:checked ~ .mobile-overlay { display:flex; }
+    #nav-toggle:checked ~ nav .hamburger span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    #nav-toggle:checked ~ nav .hamburger span:nth-child(2) { opacity:0; }
+    #nav-toggle:checked ~ nav .hamburger span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    @media (max-width:768px) {
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height:100vh;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      text-align:center;
+      padding:120px 24px 80px;
+      position:relative; overflow:hidden;
+    }
+    .hero-blobs { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .blob { position:absolute; border-radius:50%; }
+    .blob-1 { top:12%; left:20%; width:520px; height:520px; background:radial-gradient(circle, rgba(108,99,255,.11) 0%, transparent 70%); animation:blob 8s ease-in-out infinite; }
+    .blob-2 { bottom:18%; right:15%; width:420px; height:420px; background:radial-gradient(circle, rgba(245,166,35,.07) 0%, transparent 70%); animation:blob 11s ease-in-out infinite 2s; }
+    .blob-3 { top:50%; right:8%; width:300px; height:300px; background:radial-gradient(circle, rgba(108,99,255,.07) 0%, transparent 70%); animation:blob 14s ease-in-out infinite 4s; }
+
+    .hero-content { max-width:860px; position:relative; z-index:1; width:100%; }
+
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 16px; border-radius:var(--radius-pill);
+      background:rgba(108,99,255,.1); border:1px solid rgba(108,99,255,.3);
+      margin-bottom:40px;
+      animation:fadeUp .6s ease both;
+    }
+    .badge-dot { width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent); }
+    .hero-badge span { font-size:13px; font-weight:500; color:var(--text-2); }
+
+    .hero-h1 {
+      font-size:clamp(40px,6vw,80px);
+      font-weight:300; letter-spacing:-.03em; line-height:1.08;
+      color:var(--text-1); margin-bottom:28px;
+      animation:fadeUp .6s ease .1s both;
+    }
+    .hero-h1 em { font-style:normal; color:var(--accent); }
+
+    .hero-sub {
+      font-size:clamp(15px,2vw,19px); font-weight:400; line-height:1.65;
+      color:var(--text-2); max-width:600px; margin:0 auto 44px;
+      animation:fadeUp .6s ease .2s both;
+    }
+
+    .hero-ctas {
+      display:flex; flex-wrap:wrap; gap:14px;
+      justify-content:center; margin-bottom:28px;
+      animation:fadeUp .6s ease .3s both;
+    }
+
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:14px 28px; border-radius:var(--radius-pill);
+      background:var(--accent); color:#fff;
+      font-family:var(--font); font-size:15px; font-weight:600;
+      border:none; cursor:pointer;
+      transition:opacity .2s, transform .2s;
+    }
+    .btn-primary:hover { opacity:.86; transform:translateY(-2px); }
+    .btn-primary svg { width:16px; height:16px; }
+
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:14px 28px; border-radius:var(--radius-pill);
+      background:transparent; color:var(--text-1);
+      font-family:var(--font); font-size:15px; font-weight:500;
+      border:1px solid var(--border); cursor:pointer;
+      transition:border-color .2s, transform .2s;
+    }
+    .btn-ghost:hover { border-color:var(--accent); transform:translateY(-2px); }
+
+    .hero-proof {
+      font-size:13px; color:var(--text-3); margin-bottom:72px;
+      animation:fadeUp .6s ease .35s both;
+    }
+    .hero-proof svg { display:inline; vertical-align:middle; margin-right:5px; color:var(--accent); width:13px; height:13px; }
+
+    /* Mockup */
+    .mockup-wrap { animation:float 5s ease-in-out infinite, fadeUp .7s ease .4s both; }
+    .mockup {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:20px; padding:24px;
+      box-shadow:0 0 80px rgba(108,99,255,.18), 0 32px 64px rgba(0,0,0,.6);
+      max-width:480px; width:100%; margin:0 auto; text-align:left;
+    }
+    .mockup-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+    .mockup-title { font-size:13px; font-weight:600; color:var(--text-1); }
+    .mockup-date  { font-family:var(--mono); font-size:11px; color:var(--text-3); margin-top:2px; }
+    .traffic-lights { display:flex; gap:6px; }
+    .tl { width:8px; height:8px; border-radius:50%; }
+    .tl-r { background:#ff5f57; } .tl-y { background:#febc2e; } .tl-g { background:#28c840; }
+
+    .mockup-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:20px; }
+    .stat-cell { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:10px 12px; }
+    .stat-label { font-family:var(--mono); font-size:10px; color:var(--text-3); margin-bottom:4px; }
+    .stat-val   { font-size:13px; font-weight:600; color:var(--text-1); }
+
+    .mockup-slots { display:flex; flex-direction:column; gap:8px; }
+    .slot { display:flex; align-items:center; gap:12px; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:10px 14px; }
+    .slot-avatar { width:32px; height:32px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+    .slot-dot { width:10px; height:10px; border-radius:50%; }
+    .slot-info { flex:1; min-width:0; }
+    .slot-name { font-size:12px; font-weight:600; color:var(--text-1); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .slot-type { font-family:var(--mono); font-size:10px; color:var(--text-3); }
+    .slot-time { font-family:var(--mono); font-size:11px; color:var(--text-2); flex-shrink:0; }
+
+    .mockup-ai {
+      margin-top:16px; display:flex; align-items:center; gap:8px;
+      padding:8px 14px; border-radius:var(--radius-pill);
+      background:rgba(108,99,255,.1); border:1px solid rgba(108,99,255,.25);
+    }
+    .mockup-ai svg { width:12px; height:12px; color:var(--accent); flex-shrink:0; }
+    .mockup-ai p  { font-size:11px; color:var(--text-2); }
+    .mockup-ai strong { color:var(--accent); }
+
+    /* SVG base */
+    svg { fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+    /* ── LOGO BAR ── */
+    .logobar { padding:64px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); overflow:hidden; }
+    .logobar > p { text-align:center; font-size:12px; font-weight:500; color:var(--text-3); letter-spacing:.08em; text-transform:uppercase; margin-bottom:36px; }
+    .marquee-track {
+      overflow:hidden;
+      -webkit-mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+    .marquee-inner { display:flex; gap:14px; width:max-content; animation:marquee 22s linear infinite; }
+    .pill { white-space:nowrap; padding:9px 20px; border-radius:var(--radius-pill); border:1px solid var(--border); background:var(--surface); font-size:13px; font-weight:500; color:var(--text-2); }
+
+    /* ── FEATURES ── */
+    .features { padding:120px 24px; }
+    .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    @media (max-width:900px) { .features-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:580px) { .features-grid { grid-template-columns:1fr; } }
+
+    .feat-card {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:16px; padding:28px;
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .feat-card:hover { transform:translateY(-4px); border-color:rgba(108,99,255,.4); box-shadow:0 16px 40px rgba(108,99,255,.1); }
+    .feat-icon {
+      width:40px; height:40px; border-radius:10px;
+      background:rgba(108,99,255,.12); border:1px solid rgba(108,99,255,.25);
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:20px;
+    }
+    .feat-icon svg { width:18px; height:18px; color:var(--accent); }
+    .feat-card h3 { font-size:16px; font-weight:600; color:var(--text-1); margin-bottom:8px; }
+    .feat-card p  { font-size:14px; color:var(--text-2); line-height:1.65; }
+
+    /* ── HOW IT WORKS ── */
+    .how { padding:120px 24px; border-top:1px solid var(--border); }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:0; position:relative; }
+    @media (max-width:768px) { .steps { grid-template-columns:1fr; gap:48px; } .step-connector { display:none; } }
+
+    .step { padding:0 40px 0 0; position:relative; }
+    .step:last-child { padding-right:0; }
+    .step-connector { position:absolute; top:22px; left:calc(44px + 8px); right:0; height:1px; background:var(--border); }
+    .step-num {
+      width:44px; height:44px; border-radius:50%;
+      background:rgba(108,99,255,.15); border:1.5px solid rgba(108,99,255,.5);
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--mono); font-size:15px; font-weight:500;
+      color:var(--accent); margin-bottom:20px; position:relative; z-index:1;
+    }
+    .step h3 { font-size:17px; font-weight:600; color:var(--text-1); margin-bottom:10px; }
+    .step p  { font-size:14px; color:var(--text-2); line-height:1.65; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding:120px 24px; border-top:1px solid var(--border); }
+    .test-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    @media (max-width:900px) { .test-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:580px) { .test-grid { grid-template-columns:1fr; } }
+
+    .test-card {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:16px; padding:28px;
+      transition:border-color .22s ease;
+    }
+    .test-card:hover { border-color:rgba(108,99,255,.3); }
+    .stars { display:flex; gap:2px; margin-bottom:20px; }
+    .star  { width:14px; height:14px; fill:var(--warm); color:var(--warm); }
+    .test-card blockquote { font-size:15px; color:#D0D0E0; line-height:1.7; font-style:italic; margin-bottom:24px; }
+    .test-author { font-size:14px; font-weight:600; color:var(--text-1); }
+    .test-biz    { font-family:var(--mono); font-size:11px; color:var(--text-3); margin-top:2px; }
+
+    /* ── CTA ── */
+    .cta-section { padding:120px 24px; }
+    .cta-card {
+      max-width:720px; margin:0 auto; text-align:center;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:24px; padding:72px 48px;
+      position:relative; overflow:hidden;
+    }
+    @media (max-width:600px) { .cta-card { padding:48px 20px; } }
+    .cta-glow {
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:400px; height:200px; border-radius:50%;
+      background:radial-gradient(ellipse, rgba(108,99,255,.14) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .cta-card h2 { font-size:clamp(26px,4vw,42px); font-weight:300; letter-spacing:-.02em; line-height:1.2; color:var(--text-1); margin-bottom:16px; position:relative; }
+    .cta-card > p { font-size:15px; color:var(--text-2); margin-bottom:40px; position:relative; }
+
+    .cta-form {
+      display:flex; gap:8px; max-width:440px;
+      margin:0 auto 20px; flex-wrap:wrap;
+      justify-content:center; position:relative;
+    }
+    .cta-input {
+      flex:1; min-width:200px; padding:14px 20px;
+      border-radius:var(--radius-pill); background:var(--bg);
+      border:1px solid var(--border); color:var(--text-1);
+      font-family:var(--font); font-size:14px;
+      outline:none; transition:border-color .2s;
+    }
+    .cta-input::placeholder { color:var(--text-3); }
+    .cta-input:focus { border-color:var(--accent); }
+    .btn-cta {
+      padding:14px 24px; border-radius:var(--radius-pill);
+      background:var(--accent); color:#fff;
+      font-family:var(--font); font-size:14px; font-weight:600;
+      border:none; cursor:pointer;
+      transition:opacity .2s, transform .2s;
+    }
+    .btn-cta:hover { opacity:.86; transform:translateY(-1px); }
+    .cta-fine { font-size:12px; color:var(--text-3); position:relative; }
+
+    /* ── FOOTER ── */
+    footer { border-top:1px solid var(--border); padding:80px 24px 40px; }
+    .footer-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:48px; margin-bottom:64px; }
+    @media (max-width:900px) { .footer-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:500px) { .footer-grid { grid-template-columns:1fr; gap:36px; } }
+
+    .footer-wordmark { font-size:18px; font-weight:700; color:var(--text-1); margin-bottom:14px; }
+    .footer-desc { font-size:13px; color:var(--text-3); line-height:1.65; }
+    .footer-col-title { font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); margin-bottom:20px; }
+    .footer-col a { display:block; font-size:13px; color:var(--text-2); margin-bottom:10px; transition:color .2s; }
+    .footer-col a:hover { color:var(--text-1); }
+
+    .footer-bar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:32px; border-top:1px solid var(--border); }
+    .footer-bar span { font-size:12px; color:var(--text-3); }
+  </style>
 </head>
-<body class="antialiased">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <img src="img/logo.svg" alt="TebbX Logo" class="logo-img">
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <a href="#waitlist" class="btn-primary text-white px-8 py-3 rounded-full font-semibold">
-                        Join Waitlist
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <!-- Hero Section -->
-    <section class="hero-pattern pt-32 pb-24 lg:pt-40 lg:pb-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-4xl mx-auto">
-                <div class="inline-block bg-rich-black text-white px-4 py-2 rounded-full mb-8 text-sm font-medium">
-                    Coming Soon
-                </div>
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 text-rich-black">
-                    Modern Clinic<br>Management<br>Made Simple
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-2xl mx-auto">
-                    Streamline your healthcare practice with TebbX — the all-in-one platform for appointments, patient records, and billing.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#waitlist" class="btn-primary text-white px-10 py-4 rounded-full font-semibold text-lg transition">
-                        Join Waitlist
-                    </a>
-                    <a href="#features" class="btn-secondary px-10 py-4 rounded-full font-semibold text-lg transition">
-                        Learn More
-                    </a>
-                </div>
-                <div class="mt-12 flex items-center justify-center gap-8 text-sm text-gray-500">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                        </svg>
-                        <span>No credit card</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                        </svg>
-                        <span>Free during beta</span>
-                    </div>
-                </div>
-            </div>
+  <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+
+  <div class="mobile-overlay" role="navigation" aria-label="Mobile navigation">
+    <a href="#features"><label for="nav-toggle">Features</label></a>
+    <a href="#how"><label for="nav-toggle">How it works</label></a>
+    <a href="#about"><label for="nav-toggle">About</label></a>
+    <a href="#cta" class="btn-nav"><label for="nav-toggle" style="cursor:pointer;">Get started free</label></a>
+  </div>
+
+  <nav aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="#" class="wordmark">Jadwala</a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#about">About</a>
+        <a href="#cta" class="btn-nav">Get started free</a>
+      </div>
+      <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </label>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-h1">
+      <div class="hero-blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <div class="badge-dot"></div>
+          <span>Now in early access</span>
         </div>
+
+        <h1 id="hero-h1" class="hero-h1">
+          Your service business,<br>
+          fully <em>automated.</em>
+        </h1>
+
+        <p class="hero-sub">
+          Jadwala brings AI-powered scheduling, CRM, and payments together — so you run less and grow more.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#cta" class="btn-primary">
+            Start for free
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#how" class="btn-ghost">See how it works</a>
+        </div>
+
+        <p class="hero-proof">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Trusted by 200+ clinics, salons, and spas across the Middle East
+        </p>
+
+        <div class="mockup-wrap" aria-hidden="true">
+          <div class="mockup">
+            <div class="mockup-header">
+              <div>
+                <div class="mockup-title">Today's Schedule</div>
+                <div class="mockup-date">Monday, 16 Jun 2026</div>
+              </div>
+              <div class="traffic-lights">
+                <div class="tl tl-r"></div>
+                <div class="tl tl-y"></div>
+                <div class="tl tl-g"></div>
+              </div>
+            </div>
+
+            <div class="mockup-stats">
+              <div class="stat-cell"><div class="stat-label">Booked</div><div class="stat-val">12/14</div></div>
+              <div class="stat-cell"><div class="stat-label">Revenue</div><div class="stat-val">AED 4,200</div></div>
+              <div class="stat-cell"><div class="stat-label">No-shows</div><div class="stat-val">0</div></div>
+            </div>
+
+            <div class="mockup-slots">
+              <div class="slot">
+                <div class="slot-avatar" style="background:rgba(108,99,255,.18);border:1.5px solid #6C63FF;">
+                  <div class="slot-dot" style="background:#6C63FF;"></div>
+                </div>
+                <div class="slot-info">
+                  <div class="slot-name">Layla Hassan</div>
+                  <div class="slot-type">Consultation</div>
+                </div>
+                <div class="slot-time">9:00 AM</div>
+              </div>
+              <div class="slot">
+                <div class="slot-avatar" style="background:rgba(245,166,35,.18);border:1.5px solid #F5A623;">
+                  <div class="slot-dot" style="background:#F5A623;"></div>
+                </div>
+                <div class="slot-info">
+                  <div class="slot-name">Ahmed Al-Rashid</div>
+                  <div class="slot-type">Follow-up</div>
+                </div>
+                <div class="slot-time">10:30 AM</div>
+              </div>
+              <div class="slot">
+                <div class="slot-avatar" style="background:rgba(108,99,255,.18);border:1.5px solid #6C63FF;">
+                  <div class="slot-dot" style="background:#6C63FF;"></div>
+                </div>
+                <div class="slot-info">
+                  <div class="slot-name">Sara Mahmoud</div>
+                  <div class="slot-type">Treatment</div>
+                </div>
+                <div class="slot-time">12:00 PM</div>
+              </div>
+              <div class="slot">
+                <div class="slot-avatar" style="background:rgba(78,205,196,.18);border:1.5px solid #4ecdc4;">
+                  <div class="slot-dot" style="background:#4ecdc4;"></div>
+                </div>
+                <div class="slot-info">
+                  <div class="slot-name">Open slot</div>
+                  <div class="slot-type">Available</div>
+                </div>
+                <div class="slot-time">2:00 PM</div>
+              </div>
+            </div>
+
+            <div class="mockup-ai">
+              <svg viewBox="0 0 24 24" style="width:12px;height:12px;color:#6C63FF;flex-shrink:0;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="#6C63FF" stroke="none"/></svg>
+              <p>AI found <strong>2 gaps</strong> to fill — sending offers now</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold text-rich-black mb-6">
-                    Everything You Need
-                </h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Powerful features for modern healthcare
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-                <!-- Feature 1 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-calendar-check text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-rich-black mb-3">Smart Scheduling</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Intelligent appointment booking with automated reminders and patient self-scheduling.
-                    </p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-user-injured text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-rich-black mb-3">Patient Records</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Secure electronic health records with easy access to patient history.
-                    </p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-file-invoice-dollar text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-rich-black mb-3">Billing & Payments</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Streamlined invoicing and insurance claims processing.
-                    </p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-chart-line text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-rich-black mb-3">Analytics & Reports</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Real-time insights with customizable reports and dashboards.
-                    </p>
-                </div>
-
-                <!-- Feature 5 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-shield-alt text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-rich-black mb-3">HIPAA Compliant</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Enterprise-grade security with full HIPAA compliance.
-                    </p>
-                </div>
-
-                <!-- Feature 6 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 icon-box rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-mobile-alt text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-rich-black mb-3">Mobile Access</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Access your clinic data anytime, anywhere.
-                    </p>
-                </div>
-            </div>
+    <!-- LOGO BAR -->
+    <section class="logobar" aria-label="Trusted by">
+      <p>Trusted by service businesses in</p>
+      <div class="marquee-track">
+        <div class="marquee-inner" aria-hidden="true">
+          <div class="pill">Medical Clinics</div>
+          <div class="pill">Dental Practices</div>
+          <div class="pill">Beauty Salons</div>
+          <div class="pill">Spas &amp; Wellness</div>
+          <div class="pill">Veterinary Clinics</div>
+          <div class="pill">Fitness Studios</div>
+          <div class="pill">Medical Clinics</div>
+          <div class="pill">Dental Practices</div>
+          <div class="pill">Beauty Salons</div>
+          <div class="pill">Spas &amp; Wellness</div>
+          <div class="pill">Veterinary Clinics</div>
+          <div class="pill">Fitness Studios</div>
         </div>
+      </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section id="benefits" class="py-24 section-pattern">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold text-rich-black mb-6">
-                Why Choose TebbX
-            </h2>
-            <p class="text-xl text-gray-600 mb-16 max-w-2xl mx-auto">
-                Transform your practice with a platform built for modern healthcare
-            </p>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-                <div>
-                    <div class="text-4xl font-bold text-rich-black mb-2">10+</div>
-                    <div class="text-sm text-gray-600 uppercase tracking-wider">Hours Saved Weekly</div>
-                </div>
-
-                <div>
-                    <div class="text-4xl font-bold text-rich-black mb-2">30%</div>
-                    <div class="text-sm text-gray-600 uppercase tracking-wider">Revenue Increase</div>
-                </div>
-
-                <div>
-                    <div class="text-4xl font-bold text-rich-black mb-2">98%</div>
-                    <div class="text-sm text-gray-600 uppercase tracking-wider">Satisfaction Rate</div>
-                </div>
-
-                <div>
-                    <div class="text-4xl font-bold text-rich-black mb-2">5min</div>
-                    <div class="text-sm text-gray-600 uppercase tracking-wider">Quick Setup</div>
-                </div>
+    <!-- FEATURES -->
+    <section class="features" id="features" aria-labelledby="feat-h2">
+      <div class="container">
+        <p class="section-label">Everything you need</p>
+        <h2 id="feat-h2" class="section-h2">One platform.<br>Every service business.</h2>
+        <div class="features-grid">
+          <article class="feat-card">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
+            <h3>AI Scheduling</h3>
+            <p>Smart booking that fills gaps automatically and reduces no-shows.</p>
+          </article>
+          <article class="feat-card">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Client CRM</h3>
+            <p>Full client history, notes, and follow-ups in one place.</p>
+          </article>
+          <article class="feat-card">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3>Online Booking</h3>
+            <p>A booking page your clients love, live in minutes.</p>
+          </article>
+          <article class="feat-card">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <h3>Payments</h3>
+            <p>Accept deposits and full payments at booking or checkout.</p>
+          </article>
+          <article class="feat-card">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3>Team Management</h3>
+            <p>Staff calendars, permissions, and performance in one view.</p>
+          </article>
+          <article class="feat-card">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </div>
+            <h3>Reminders &amp; Automation</h3>
+            <p>Automated SMS and email flows that run without you.</p>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Pricing Teaser -->
-    <section id="pricing" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold text-rich-black mb-6">
-                    Simple Pricing
-                </h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Flexible plans for practices of all sizes
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Starter Plan -->
-                <div class="border-2 border-gray-200 rounded-2xl p-8 hover:border-rich-black transition">
-                    <div class="text-center mb-8">
-                        <h3 class="text-lg font-semibold text-gray-600 mb-4">Starter</h3>
-                        <div class="text-5xl font-bold text-rich-black mb-2">$49</div>
-                        <div class="text-gray-500">per month</div>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Up to 100 patients</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Basic scheduling</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Patient records</span>
-                        </li>
-                    </ul>
-                    <button class="w-full btn-secondary px-6 py-3 rounded-full font-semibold">
-                        Join Waitlist
-                    </button>
-                </div>
-
-                <!-- Professional Plan -->
-                <div class="bg-rich-black text-white rounded-2xl p-8 relative transform scale-105">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white text-rich-black px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                        Popular
-                    </div>
-                    <div class="text-center mb-8">
-                        <h3 class="text-lg font-semibold text-gray-300 mb-4">Professional</h3>
-                        <div class="text-5xl font-bold text-white mb-2">$99</div>
-                        <div class="text-gray-400">per month</div>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Unlimited patients</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Advanced scheduling</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Analytics & reports</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Priority support</span>
-                        </li>
-                    </ul>
-                    <button class="w-full bg-white text-rich-black px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
-                        Join Waitlist
-                    </button>
-                </div>
-
-                <!-- Enterprise Plan -->
-                <div class="border-2 border-gray-200 rounded-2xl p-8 hover:border-rich-black transition">
-                    <div class="text-center mb-8">
-                        <h3 class="text-lg font-semibold text-gray-600 mb-4">Enterprise</h3>
-                        <div class="text-5xl font-bold text-rich-black mb-2">Custom</div>
-                        <div class="text-gray-500">contact us</div>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Everything in Pro</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Multi-location</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <svg class="w-5 h-5 text-rich-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Dedicated support</span>
-                        </li>
-                    </ul>
-                    <button class="w-full btn-secondary px-6 py-3 rounded-full font-semibold">
-                        Contact Sales
-                    </button>
-                </div>
-            </div>
-
-            <div class="text-center mt-16">
-                <p class="text-gray-600">
-                    Early adopters get <span class="font-bold text-rich-black">3 months free</span> during beta
-                </p>
-            </div>
+    <!-- HOW IT WORKS -->
+    <section class="how" id="how" aria-labelledby="how-h2">
+      <div class="container">
+        <p class="section-label">Simple by design</p>
+        <h2 id="how-h2" class="section-h2">Up and running<br>in under 10 minutes.</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-connector" aria-hidden="true"></div>
+            <div class="step-num">1</div>
+            <h3>Create your account</h3>
+            <p>Add your services, team, and availability.</p>
+          </div>
+          <div class="step">
+            <div class="step-connector" aria-hidden="true"></div>
+            <div class="step-num">2</div>
+            <h3>Share your booking link</h3>
+            <p>Send clients your page or embed it on your site.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Watch it fill up</h3>
+            <p>Jadwala handles confirmations, reminders, and payments.</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Waitlist Section -->
-    <section id="waitlist" class="py-24 bg-rich-black">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center text-white mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    Join the Waitlist
-                </h2>
-                <p class="text-xl text-gray-400">
-                    Be first to experience TebbX when we launch
-                </p>
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" aria-labelledby="test-h2">
+      <div class="container">
+        <h2 id="test-h2" class="section-h2">Loved by service businesses.</h2>
+        <div class="test-grid">
+          <article class="test-card">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
-
-            <div class="bg-white rounded-3xl p-8 md:p-12">
-                <form id="waitlist-form" class="space-y-6" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSeDdQ9aKOxDpgpwjXWFWAiOjo65K6Hhq5ZqXeMKQkAramjQ6A/formResponse" target="hidden_iframe">
-                    <input type="hidden" name="fvv" value="1">
-                    <input type="hidden" name="pageHistory" value="0">
-                    <input type="hidden" name="fbzx" value="-6561125678200727329">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                        <label for="firstName" class="block text-sm font-medium text-gray-900 mb-2">First Name *</label>
-                        <input type="text" id="firstName" name="entry.1121097679" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
-                        </div>
-                        <div>
-                        <label for="lastName" class="block text-sm font-medium text-gray-900 mb-2">Last Name *</label>
-                        <input type="text" id="lastName" name="entry.1352493208" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-900 mb-2">Email Address *</label>
-                        <input type="email" id="email" name="entry.1816829922" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
-                    </div>
-
-                    <div>
-                        <label for="clinicName" class="block text-sm font-medium text-gray-900 mb-2">Clinic/Practice Name *</label>
-                        <input type="text" id="clinicName" name="entry.1503073627" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
-                    </div>
-
-                    <div>
-                        <label for="clinicSize" class="block text-sm font-medium text-gray-900 mb-2">Practice Size *</label>
-                        <select id="clinicSize" name="entry.1368136194" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rich-black focus:outline-none transition">
-                            <option value="">Select practice size</option>
-                            <option value="Solo Practitioner">Solo Practitioner</option>
-                            <option value="Small Practice (2-5 Providers)">Small Practice (2-5 Providers)</option>
-                            <option value="Medium Practice (6-20 Providers)">Medium Practice (6-20 Providers)</option>
-                            <option value="Large Practice (20+ Providers)">Large Practice (20+ Providers)</option>
-                        </select>
-                    </div>
-
-                    <div class="flex items-start">
-                        <input type="checkbox" id="newsletter" name="entry.410652002" value="Yes" class="mt-1 w-5 h-5 text-rich-black border-gray-300 rounded focus:ring-rich-black">
-                        <label for="newsletter" class="ml-3 text-sm text-gray-700">
-                            I'd like to receive updates about TebbX
-                        </label>
-                    </div>
-
-                    <button type="submit" class="w-full btn-primary text-white px-8 py-4 rounded-full font-bold text-lg">
-                        Join the Waitlist
-                    </button>
-
-                    <p class="text-center text-sm text-gray-600">
-                        By joining, you'll get early access, exclusive discounts, and priority support
-                    </p>
-                </form>
-                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-                <iframe name="hidden_iframe" style="display:none;"></iframe>
-
-                <div id="success-message" class="hidden mt-6 p-4 bg-green-100 border-2 border-green-500 rounded-lg text-green-700 text-center">
-                    <i class="fas fa-check-circle text-2xl mb-2"></i>
-                    <p class="font-bold">Thank you for joining our waitlist!</p>
-                    <p>We'll be in touch soon with exclusive early access details.</p>
-                </div>
+            <blockquote>"We reduced no-shows by 60% in the first month. The automated reminders are a game changer."</blockquote>
+            <div class="test-author">Dr. Sarah A.</div>
+            <div class="test-biz">Dental Clinic</div>
+          </article>
+          <article class="test-card">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
+            <blockquote>"Setting up took 8 minutes. Our clients started booking online the same day."</blockquote>
+            <div class="test-author">Noor K.</div>
+            <div class="test-biz">Beauty Salon</div>
+          </article>
+          <article class="test-card">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <blockquote>"Finally a system that actually understands how a clinic works."</blockquote>
+            <div class="test-author">Ahmad M.</div>
+            <div class="test-biz">Physiotherapy Center</div>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-white py-16 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="flex items-center">
-                    <img src="img/logo.svg" alt="TebbX Logo" class="footer-logo">
-                </div>
-                
-                <div class="flex gap-6 text-sm text-gray-600">
-                    <a href="#features" class="hover:text-rich-black transition link-underline">Features</a>
-                    <a href="#benefits" class="hover:text-rich-black transition link-underline">Benefits</a>
-                    <a href="#pricing" class="hover:text-rich-black transition link-underline">Pricing</a>
-                    <a href="#waitlist" class="hover:text-rich-black transition link-underline">Waitlist</a>
-                </div>
+    <!-- CTA -->
+    <section class="cta-section" id="cta" aria-labelledby="cta-h2">
+      <div class="cta-card">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <h2 id="cta-h2">Ready to run your business<br>on autopilot?</h2>
+        <p>Join hundreds of service businesses already using Jadwala.</p>
+        <form class="cta-form" action="#" method="post">
+          <input class="cta-input" type="email" name="email" placeholder="Enter your email" required aria-label="Email address" />
+          <button class="btn-cta" type="submit">Get early access</button>
+        </form>
+        <p class="cta-fine">Free to start. No credit card required.</p>
+      </div>
+    </section>
 
-                <div class="flex gap-4">
-                    <a href="https://twitter.com/tebbxco" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
-                        <i class="fab fa-twitter text-gray-600"></i>
-                    </a>
-                    <a href="https://linkedin.com/company/tebbx" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
-                        <i class="fab fa-linkedin text-gray-600"></i>
-                    </a>
-                    <a href="https://instagram.com/tebbxco" target="_blank" class="w-10 h-10 border border-gray-300 rounded-full flex items-center justify-center hover:border-rich-black transition">
-                        <i class="fab fa-instagram text-gray-600"></i>
-                    </a>
-                </div>
-            </div>
+  </main>
 
-            <div class="border-t border-gray-200 mt-12 pt-8 text-center">
-                <p class="text-sm text-gray-600">
-                    © 2025 TebbX. All rights reserved.
-                </p>
-            </div>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-wordmark">Jadwala</div>
+          <p class="footer-desc">AI-powered scheduling and operations for every service business.</p>
         </div>
-    </footer>
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <a href="#">Scheduling</a>
+          <a href="#">CRM</a>
+          <a href="#">Payments</a>
+          <a href="#">Automations</a>
+          <a href="#">Integrations</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="#">About</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <a href="#">Twitter / X</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+          <a href="mailto:hello@jadwala.io">hello@jadwala.io</a>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <span>&copy; 2026 Jadwala. Made with intention.</span>
+        <span>jadwala.io</span>
+      </div>
+    </div>
+  </footer>
 
-    <!-- JavaScript -->
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form submission → let POST go to Google; show success when iframe loads
-        const waitlistForm = document.getElementById('waitlist-form');
-        const successMessage = document.getElementById('success-message');
-        const hiddenIframe = document.getElementById('hidden_iframe');
-
-        if (hiddenIframe) {
-            hiddenIframe.onload = function () {
-                if (!successMessage.classList.contains('hidden')) return;
-                waitlistForm.style.display = 'none';
-                successMessage.classList.remove('hidden');
-            };
-        }
-
-        // Add navbar shadow on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 10) {
-                nav.classList.add('shadow-lg');
-            } else {
-                nav.classList.remove('shadow-lg');
-            }
-        });
-    </script>
 </body>
-</html>
-
+</html>`
