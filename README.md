@@ -1,32 +1,6 @@
-# TebbX Landing Page
+# Jadwala Landing Page
 
-A professional, enterprise-level landing page for TebbX clinic management system.
-
-## 🚀 Features
-
-- **Minimal Black & White Design**: Clean, professional aesthetic with pure black and white
-- **SVG Logo**: Crisp, scalable logo from your brand assets
-- **Responsive**: Mobile-first design that works on all devices
-- **Fast Loading**: Optimized for performance
-- **SEO Friendly**: Proper meta tags and semantic HTML
-- **Conversion Optimized**: Clear CTAs and waitlist signup form
-- **Simplified Navigation**: Minimal header focused on conversion
-
-## 📋 Sections
-
-1. **Hero Section**: Eye-catching headline with CTA buttons
-2. **Features**: 6 key features of the clinic management system
-3. **Benefits**: Why healthcare professionals should choose TebbX
-4. **Pricing**: Three pricing tiers (Starter, Professional, Enterprise)
-5. **Waitlist Form**: Capture early adopters
-6. **Footer**: Links and social media connections
-
-## 🛠️ Technologies Used
-
-- HTML5
-- Tailwind CSS (via CDN)
-- Font Awesome Icons
-- Vanilla JavaScript
+A professional, enterprise-level landing page for Jadwala
 
 ## 📦 Deployment to GitHub Pages
 
